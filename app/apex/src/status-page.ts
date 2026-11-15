@@ -5,7 +5,7 @@ import { themeAttributeMarkup, type ThemeAttribute } from './theme';
 
 /*
  * The status, 404 and 429 documents are chrome-free by design (see
- * docs/design/ui-shell-contract.md §15) but no longer unstyled: they link the
+ * docs/design/apex-html-contract.md §1) but no longer unstyled: they link the
  * same compiled stylesheet as every other document this unit serves, which the
  * assets binding answers without invoking the Worker.
  *

@@ -13,9 +13,10 @@ the production workers.dev endpoint while retaining version previews. Production
 `umaxica.{app,com,org,net,dev}` as custom domains, with `workers_dev: false`
 and `preview_urls: true`. Named development/test environments retain empty
 routes and inherit the disabled workers.dev endpoint and enabled version previews. This supersedes the
-empty-production-routes requirement below; it does not claim a completed
-Cloudflare cutover. The hostname ownership check and Tunnel/DNS conflict
-resolution described below remain required before applying the cutover.
+empty-production-routes requirement below. The repository split leaves these
+five packages as Zenith's only deployment units. The checked-in configuration
+does not prove that Cloudflare has applied the custom domains or completed the
+cutover; that external state still requires an operator check.
 
 ## Context
 
@@ -35,8 +36,8 @@ Access application for them. That state has not been re-read for this record.
 
 1. `app/apex`, `com/apex` and `org/apex` return as **standalone Hono deployment
    units**, one per brand, with no imports between them. Each owns its own
-   `.oxlintrc.json`, `.oxfmtrc.json`, `tsconfig.json`, Vitest config, `knip.jsonc`,
-   tests and `wrangler.jsonc`, as every unit does.
+   `.oxlintrc.json`, `.oxfmtrc.json`, `tsconfig.json`, `vite.config.ts` (including its Vitest
+   settings), `knip.jsonc`, tests and `wrangler.jsonc`, as every unit does.
 2. **The base is the current `dev/apex`, not the pre-retirement code.** Each unit
    is the working `dev/apex` (security headers, production Host policy with 421,
    CSRF, body size limit, `Content-Encoding` rejection, request id, timeouts,
@@ -68,35 +69,36 @@ Access application for them. That state has not been re-read for this record.
    Any other id would break the `<port><region>` rule `tools/check-workers.mjs`
    enforces. Budgets and the checker are unchanged.
 6. **The deployment graph includes them again**: pnpm workspace and lockfile,
-   `tools/workers-manifest.json` `standalone`, Compose services and ports
-   (`5101`, `5301`, `5401`), Dev Container forwards, CI matrices,
-   `scripts/deploy-edge-preview`, `scripts/check-local`,
-   `scripts/check-apex-domains`, and the connectivity-acceptance tunnel surfaces.
-   Twenty deployment units. `test/apex-units.test.ts` replaces
-   `test/retired-apex-units.test.ts` and requires each unit to appear exactly
-   once on each of those edges, with each apex host allowed by exactly one unit.
+   `tools/workers-manifest.json` `standalone`, Compose services and ports,
+   Dev Container forwards, CI matrices, `scripts/deploy-edge-preview`, and
+   `scripts/check-local`. The current graph contains five deployment units.
+   `test/apex-units.test.ts` requires each unit in the workspace, lockfile,
+   manifest, CI matrices and preview allowlist, and checks its Worker name and
+   host configuration.
 7. **`dev/apex` and `net/apex` are unchanged.**
 
 ## Not decided here — Cloudflare ownership
 
-This record changes the repository only. Every `wrangler.jsonc` keeps
-`"routes": []` at the top level and in every environment, so no deploy can claim
-a hostname. Serving `umaxica.{app,com,org}` from these Workers is a separate
-operator change, done after explicit approval:
+This record changes the repository only. The production `wrangler.jsonc`
+configuration declares custom domains for the five apex Workers; development
+and test environments keep empty routes. A configuration change alone does not
+establish that Cloudflare applied those domains. Any external cutover remains a
+separate operator action, done after explicit approval:
 
 1. Confirm the current owner of each hostname (Tunnel Public Hostname, Access
    application, Worker custom domain or route, DNS) — there must be one.
 2. Remove the Tunnel Public Hostname (and any Access application) first, then
    add the Worker custom domain — in that order, per ADR 008.
-3. Verify with `scripts/check-apex-domains`; until step 2 it reports FAIL for
-   the three hosts, which is the expected pre-cutover state.
+3. Verify in Cloudflare that each production hostname belongs to its intended
+   Worker and make a successful request to each hostname. This repository has
+   no local script that verifies the live Cloudflare ownership state.
 
 Rollback of the repository change is reverting the commit that carries this
 record. Rollback of a completed cutover is the reverse of step 2.
 
 ## Consequences
 
-- Until the cutover, the three units run locally and in CI only. They are not
-  public, and nothing in this record claims they are.
-- `tunnel` / `tunnel:apex` connectivity modes now include the three apexes and
-  will fail for them while the Tunnel routes those hostnames elsewhere.
+- The repository records the intended production mapping, but the live status
+  of the custom-domain cutover must be verified by an operator.
+- The repository split leaves these five apex units as this repository's only
+  deployment packages. The local test and CI graph now covers those five.

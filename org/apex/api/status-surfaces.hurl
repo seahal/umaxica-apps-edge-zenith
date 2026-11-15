@@ -1,6 +1,6 @@
 # The status surface: 404.
 #
-# The 404 is chrome-free by design (docs/design/ui-shell-contract.md §15) but not
+# The 404 is chrome-free by design (docs/design/apex-html-contract.md §1) but not
 # unstyled — it links the same compiled stylesheet as every other document, and
 # it must carry the brand title contract `{PAGE} — UMAXICA (ORG)` like any
 # other page. Replaces the `app.request()` halves of

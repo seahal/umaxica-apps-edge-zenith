@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-use_rails=false
 use_tunnel=false
 for argument in "$@"; do
   case "${argument}" in
-    --rails) use_rails=true ;;
     --tunnel) use_tunnel=true ;;
-    *) echo "Usage: $0 [--rails] [--tunnel]" >&2; exit 2 ;;
+    *) echo "Usage: $0 [--tunnel]" >&2; exit 2 ;;
   esac
 done
 
@@ -104,19 +102,6 @@ if [[ -z ${GH_TOKEN:-} ]]; then
   echo '  export GH_TOKEN="$(gh auth token)"' >&2
 fi
 
-if [[ ${use_rails} == true ]]; then
-  if [[ -z ${EDGE_RAILS_NETWORK:-} ]]; then
-    echo 'ERROR: --rails requires EDGE_RAILS_NETWORK to name the existing Rails rootless Podman network.' >&2
-    echo 'Inspect available networks with: podman network ls' >&2
-    exit 1
-  fi
-  if ! podman network exists "${EDGE_RAILS_NETWORK}"; then
-    echo "ERROR: Rails network does not exist: ${EDGE_RAILS_NETWORK}" >&2
-    echo 'Inspect available networks with `podman network ls`, then set EDGE_RAILS_NETWORK.' >&2
-    exit 1
-  fi
-fi
-
 # A remotely managed connector token is base64-encoded JSON whose `t` field is the
 # tunnel UUID. Decoding it needs no credential and reveals nothing secret: the UUID
 # is the tunnel's dashboard identifier. Printing anything else from the token is
@@ -133,8 +118,7 @@ tunnel_uuid_of() {
     grep -oE '[0-9a-fA-F-]{36}'
 }
 
-# Independent of --rails on purpose: inbound Edge exposure and outbound Rails
-# connectivity answer different questions. The connector is defined in
+# The connector is defined in
 # `compose.yaml` because it is shared, so this adds no overlay — it only asks for
 # the service to be started. It uses this compose project's default network and
 # requires this repository's own tunnel token from `.env`.

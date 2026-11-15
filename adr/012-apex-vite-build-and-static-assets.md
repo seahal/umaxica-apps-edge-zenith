@@ -1,6 +1,16 @@
 # ADR 012: The apex workers build through Vite, and the NET series owns its root
 
-> Superseded for app/com/org apex only by [ADR 024](024-retire-app-com-org-apex-units.md). The record below is unchanged history.
+## Configuration amendment — 2026-11-14
+
+The repository now contains only the five Hono apex Workers. Vite remains the build engine and
+`@cloudflare/vite-plugin` still produces the production Worker and fingerprinted assets. The root
+and package scripts invoke that toolchain through Vite+ (`vp`), with each package's test settings
+merged into its own `vite.config.ts`. This changes the developer command surface, not the Worker
+build output or Cloudflare configuration.
+
+The historical outcomes below describe the repository and checks as they stood on their recorded
+dates. The 2026-10-14 reintroduction in [ADR 027](027-reintroduce-app-com-org-apex-units.md)
+superseded the retirement in ADR 024.
 
 ## Status: Implemented 2026-08-19
 

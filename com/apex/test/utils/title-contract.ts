@@ -15,8 +15,7 @@ const TITLE_CONTRACT = /^(?:.+ — )?UMAXICA \((APP|COM|ORG|NET|DEV)\)$/u;
 
 /**
  * Surface and runtime names. A user-facing title must never reveal which
- * deployment unit or which runtime served the route, so that Rails and Edge can
- * split routes inside one FQDN invisibly.
+ * deployment unit or which runtime served the route.
  */
 export const FORBIDDEN_TOKEN =
   /\b(?:auth|core|apex|side|edge|next|next\.js|nextjs|hono|workers?|cloudflare|opennext)\b/iu;

@@ -1,7 +1,7 @@
 /*
  * Kubernetes-style probes for this Worker. Startup and liveness are the
  * process itself: if this module ran, the isolate can serve. Readiness does
- * not call Rails, CMS, KV, or any other hop — prerendered pages do not need
+ * not read a binding or contact another service — prerendered pages do not need
  * them, and a downstream outage must not mark a healthy Worker unready.
  */
 

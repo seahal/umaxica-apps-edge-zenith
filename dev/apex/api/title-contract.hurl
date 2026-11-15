@@ -13,9 +13,8 @@
 #   5. a non-root surface carries a page-specific segment before the EM DASH
 #   6. the title never names the surface or the runtime that served it
 #
-# Rule 6 is the one with teeth: Rails and Edge split routes inside one FQDN, and
-# that split has to be invisible to a user reading their tab. `apex`, `core`,
-# `hono`, `workers`, `cloudflare`, `next` and friends must not appear.
+# Rule 6 keeps internal surface and runtime names out of the title. A page title
+# tells the visitor what the page is, not which package served it.
 #
 # `test/title-contract.test.ts` keeps the one surface no client can request —
 # the 500 document — using the same rules from `test/utils/title-contract.ts`.

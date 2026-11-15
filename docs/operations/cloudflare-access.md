@@ -1,17 +1,10 @@
-# Cloudflare Access development validation
+# Cloudflare Access for development
 
-The active procedure moved to
-[`docs/development/cloudflare-development-network.md`](../development/cloudflare-development-network.md)
-and
-[`docs/development/credential-and-secret-management.md`](../development/credential-and-secret-management.md).
+Development hostnames exposed through the Edge-owned Cloudflare Tunnel must be protected by
+Cloudflare Access. Do not add an unauthenticated bypass for health or revision paths. The local
+repository contains the connector, but does not manage the external Tunnel ingress or Access
+policies.
 
-Access service tokens are used only by `scripts/check-tunnel` and, optionally, by
-`tools/verify-edge-connectivity.mjs`. They are not an application fallback and are not loaded into
-the normal application runtime.
-
-For the sixteen Edge development surfaces, the authority is the "Cloudflare Access" section of
-[`cloudflare-tunnel-development.md`](cloudflare-tunnel-development.md). Two things to know before
-reading anything older: Access covers **all sixteen** hostnames as of 2026-08-11, and it covers the
-**whole host** — there is no `/health*` Bypass, so health endpoints answer a 302 unauthenticated
-like every other path. `adr/008-edge-development-tunnel-exposure.md` records why the Bypass was
-declined and what it costs.
+The reason for requiring host-wide authentication and avoiding health-path bypasses is recorded in
+[ADR 008](../../adr/008-edge-development-tunnel-exposure.md). The connector's local setup is in
+[Tunnel development](cloudflare-tunnel-development.md).

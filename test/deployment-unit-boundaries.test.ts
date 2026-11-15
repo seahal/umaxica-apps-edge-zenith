@@ -10,11 +10,8 @@ const repoRoot = join(import.meta.dirname, '..');
  * The single owner of the "no deployment unit imports another deployment unit"
  * invariant. Neither of the two obvious homes can hold it:
  *
- * - `.oxlintrc.json` matches import SPECIFIER text, so it cannot tell
- *   `app/core -> app/docs` (written `../../../docs/...`) from a legitimate
- *   within-unit `src/app/docs/...` reference. Unit names — core, docs, info,
- *   news, help — are ordinary directory names inside a unit, so any pattern
- *   broad enough to catch the first also rejects the second.
+ * - `.oxlintrc.json` matches import SPECIFIER text, so it cannot tell an
+ *   inter-package relative path from a legitimate path within one package.
  * - `.dependency-cruiser.cjs` COULD express it exactly, on resolved paths with
  *   backreferences, but depcruise needs TypeScript's programmatic API and
  *   declares `typescript` >=2 <7. TypeScript 7.0 does not ship that API — 7.1
@@ -82,8 +79,7 @@ function sourceFilesUnderUnits(): { path: string; unit: string }[] {
 // and `.../` are not paths.
 const PARENT_PATH = /(?<![\w.])(\.\.\/[^\s'"`,;)\]}]*)/gu;
 
-// Binary assets and the committed TanStack route tree (generated, and made of
-// in-unit `./routes/...` specifiers only) carry no hand-written references.
+// Binary assets carry no hand-written references.
 const NOT_IMPLEMENTATION =
   /\.(?:md|png|jpe?g|gif|ico|webp|avif|svg|woff2?|ttf|otf)$|\/routeTree\.gen\.ts$/u;
 
@@ -148,10 +144,7 @@ describe('deployment unit boundaries', () => {
   it('reads a plausible set of units from pnpm-workspace.yaml', () => {
     // Everything below is only as strong as this list. If the parse silently
     // returned nothing, every assertion would vacuously pass.
-    expect(units.length).toBeGreaterThanOrEqual(20);
-    expect(units).toContain('app/core');
-    expect(units).toContain('net/apex');
-    expect(units).toContain('dev/apex');
+    expect(units).toEqual(['app/apex', 'com/apex', 'org/apex', 'net/apex', 'dev/apex']);
   });
 
   it('finds source files to check', () => {
@@ -187,7 +180,7 @@ describe('deployment unit boundaries', () => {
     // The import scan above only reads module specifiers. Configuration reaches
     // files too — a `../../tools/x.mjs` in a package.json script, a `$schema`,
     // `@import`/`@source` in a stylesheet, `main` in wrangler.jsonc, a Knip
-    // `entry`, an inlang `modules` path. Any `../` token that resolves outside
+    // `entry`, a `modules` path in package configuration. Any `../` token that resolves outside
     // the unit is an escape, whatever the file type. Prose (`*.md`) is exempt:
     // a unit README may cite a root ADR without depending on it.
     const violations: string[] = [];
@@ -331,7 +324,7 @@ describe('deployment unit boundaries', () => {
   });
 
   it('owns the tooling configuration needed to run standalone', () => {
-    const required = ['vitest.config.ts', 'vitest.setup.ts', '.oxlintrc.json', '.oxfmtrc.json'];
+    const required = ['vite.config.ts', 'vitest.setup.ts', '.oxlintrc.json', '.oxfmtrc.json'];
     const missing: string[] = [];
 
     for (const unit of units) {

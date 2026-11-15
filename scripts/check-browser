@@ -2,9 +2,10 @@
 set -euo pipefail
 
 for workspace in \
-  umaxica-apps-edge-zenith-app-core \
-  umaxica-apps-edge-zenith-com-core \
-  umaxica-apps-edge-zenith-org-core \
-  umaxica-apps-edge-zenith-dev-acme; do
+  umaxica-apps-edge-zenith-app-apex \
+  umaxica-apps-edge-zenith-com-apex \
+  umaxica-apps-edge-zenith-org-apex \
+  umaxica-apps-edge-zenith-dev-apex \
+  umaxica-apps-edge-zenith-net-apex; do
   pnpm --filter "${workspace}" exec playwright test --project=chromium
 done

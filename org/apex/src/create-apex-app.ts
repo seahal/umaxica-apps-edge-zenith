@@ -96,18 +96,10 @@ const varyOnNegotiation: MiddlewareHandler = async (c, next) => {
  * The probes the rate limiter must never see, and the reason the set is this
  * small.
  *
- * Each of these three is a constant — no binding read, no downstream hop,
- * nothing that can fail. A 429 on one of them is indistinguishable from a dead
- * isolate, so an endpoint an orchestrator trusts to mean "alive" must not be
- * throttleable.
- *
- * `/health` and `/health/readinesses` are deliberately absent. They answer from
- * this isolate on an apex Worker, but they reach Rails over the Workers VPC
- * binding on a Core and on a TanStack public surface, and this exemption is written once
- * for all seventeen units rather than per family: a set that means "cheap here,
- * an uncounted path into Rails there" is not a rule anyone can check. Readiness
- * is the probe whose job is to answer "do not send me traffic"; being throttled
- * is a correct answer for it, and is not one for liveness or startup.
+ * These three are machine probes whose role would be undermined by throttling:
+ * a 429 on startup, liveness, or self-health can be mistaken for a failed
+ * isolate. Readiness remains metered because it is an operational signal, not
+ * a constant self-health document.
  *
  * `/revision` and `/api/v0/revision.json` are absent too: deployment metadata,
  * not probes. Nothing operational breaks when one of them is throttled, so

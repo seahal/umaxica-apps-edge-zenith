@@ -8,15 +8,9 @@
  * `prefers-color-scheme`; `style.css` defines the `dark` variant around
  * exactly that three-way split.
  *
- * Deliberately read-only. Nothing in this repository sets `theme` yet: the
- * header's actions slot is still empty by design (`shell.tsx`), and a control
- * that writes this cookie is a browser concern bound by
- * `docs/development/browser-cookie-access.md`. Honouring a cookie something
- * else sets costs one header read; the OS preference works today either way.
- *
- * Only the apex Workers do this. Core strips inbound Cookie on
- * application-owned requests (ADR 007). The twelve public frames do not strip
- * Cookie, but they also do not read a theme cookie: they stay light-only.
+ * Deliberately read-only. This Worker honours a theme cookie supplied by the
+ * browser, but no route writes or refreshes it. The browser access policy is in
+ * `docs/development/browser-cookie-access.md`.
  */
 
 /**
@@ -31,7 +25,7 @@ export type ThemeAttribute = 'light' | 'dark' | undefined;
  * `Context`. `renderer.tsx` has no typed one to give it: `jsxRenderer`'s
  * component callback is not generic in `Env`, so its `c` is `Context<any>` and
  * passing that to a `Context<ApexEnv>` parameter is the unsafe argument
- * `lint:types` rejects. A `Request` is what `checkRateLimit` already takes in
+ * `lint:check` rejects. A `Request` is what `checkRateLimit` already takes in
  * this unit for the same reason, and every call site holds one.
  *
  * Finds the cookie; does not judge it. Which values mean something is

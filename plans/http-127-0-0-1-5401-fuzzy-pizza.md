@@ -1,5 +1,9 @@
 # Fix: `wrangler dev` unreachable at http://127.0.0.1:5401 from inside dev container
 
+> Historical issue record. The package command has since moved to Vite+; the current local
+> listener is configured by `vp dev --host` in each apex package. Use the package manifest and
+> current development docs for commands.
+
 ## Context
 
 The user is working inside a dev container and cannot reach `http://127.0.0.1:5401/`

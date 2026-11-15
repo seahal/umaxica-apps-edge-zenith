@@ -1,33 +1,24 @@
-# Architecture Decision Records (ADR)
+# Architecture Decision Records
 
-This directory contains completed architecture decisions and implementation plans that have been executed.
+These records describe decisions that apply to Zenith's five apex Workers and their development
+environment. The split work order and historical decisions are retained as context; their older
+package counts and deployment inventories are not current configuration.
 
-## Format
+## Current decisions
 
-Each file follows the naming convention: `NNN-short-title.md`
+- [ADR 010](010-first-touch-rate-limiting.md) — rate limiting at the Hono request boundary
+- [ADR 011](011-apex-workers-stay-hono.md) — Hono remains the apex runtime
+- [ADR 012](012-apex-vite-build-and-static-assets.md) — Vite builds Worker bundles and static assets
+- [ADR 014](014-edge-owned-development-tunnel.md) — the development Tunnel belongs to this repository
+- [ADR 017](017-edge-self-health-api.md) — Edge self-health response contract
+- [ADR 020](020-wrangler-device-login.md) — Wrangler device authorization
+- [ADR 021](021-hsts-preload.md) — HSTS response policy
+- [ADR 022](022-rate-limit-namespace-allocation.md) — per-Worker rate-limit namespace allocation
+- [ADR 027](027-reintroduce-app-com-org-apex-units.md) — app/com/org apex deployment units
 
-Files are promoted here from `/plans/` when the corresponding implementation is complete and merged.
+## History
 
-Each ADR should end with a `## Outcome` section describing what was implemented and linking the relevant PR(s).
-
-ADR 017 records the Edge self-health machine API (`GET /api/v0/health.json`)
-as distinct from Rails health consumption (ADR 016) and from operational
-`text/plain` probes.
-
-Some ADRs may record an accepted architecture boundary before implementation.
-Those records should state that implementation is deferred in their `## Outcome`
-section.
-
-Current boundary records:
-
-- [ADR 016](016-rails-machine-health-api.md) — Rails machine health API
-- [ADR 017](017-edge-self-health-api.md) — Edge self-health API
-- [ADR 018](018-core-rails-direct-internet.md) — Core direct Internet transport
-- [ADR 019](019-edge-parallel-contract-boundaries.md) — Edge boundaries that can ship beside the Rails rewrite
-- [ADR 020](020-wrangler-device-login.md) — Wrangler device login
-- [ADR 021](021-hsts-preload.md) — HSTS with preload
-- [ADR 023](023-rails-proxy-trust-boundary.md) — Edge → Rails proxy trust boundary
-- [ADR 024](024-retire-app-com-org-apex-units.md) — app/com/org apex deployment units retired; apex ownership vacated for Experience
-- [ADR 025](025-csp-report-ownership.md) — CSP violation report ownership (contract only; implementation deferred)
-- [ADR 026](026-tanstack-start-stable-caret-range.md) — TanStack Start stable; `^` catalog range, single Router, plain entry for Publishing cells
-- [ADR 027](027-reintroduce-app-com-org-apex-units.md) — app/com/org apex Hono units reintroduced (supersedes ADR 024); Cloudflare cutover pending
+- [ADR 002](002-dev-apex-vercel.md) records the former Vercel deployment for `dev/apex`.
+- [ADR 003](003-apex-direct-composition.md) records the Hono composition boundary.
+- [ADR 008](008-edge-development-tunnel-exposure.md) records the earlier development-surface Tunnel design and its current Access policy.
+- [ADR 024](024-retire-app-com-org-apex-units.md) is superseded by ADR 027 and remains as history.

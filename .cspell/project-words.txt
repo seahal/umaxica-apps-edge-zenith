@@ -28,17 +28,12 @@ NOERROR     # DNS response codes, in the tunnel operations runbook
 NXDOMAIN
 
 # --- The toolchain, by package or binary name ---
-nuqs        # named in plans/ only; the catalog entry it pinned is gone
 Pulumi      # named in docs/operations/ only to record that it is NOT used
 tsgolint
 hurlfmt
 syncpackrc
 smol        # smol-toml, an advisory floor in pnpm-workspace.yaml
-endoflife   # endoflife.date
-jscoverage
 inlang      # the localization project format and Paraglide compiler ecosystem
-publishedat # generated Paraglide message identifier
-searchnoresults # generated Paraglide message identifier
 Pagy        # Rails offset-pagination gem; Edge forwards page numbers only
 GHSA        # GitHub advisory identifiers
 qqqr        # ...and a fragment of one: GHSA-8988-4f7v-96qf's neighbour
@@ -65,8 +60,6 @@ Ghostty
 # --- quoted from tailnet configuration and the tailscale/tailscale image.
 tailnet
 tskey
-netavark
-DERP
 
 # --- Chromium's shared-library dependencies, listed in Containerfile so
 # --- Playwright can run. These are package names, not words.
@@ -131,7 +124,6 @@ sess
 creds
 ecom
 changeme
-blkd        # the BLOCKED status abbreviation in tools/verify-edge-connectivity.mjs
 SPOF
 ERRO
 PKCE        # the OAuth Proof Key for Code Exchange extension, RFC 7636

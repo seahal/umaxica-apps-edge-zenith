@@ -46,7 +46,7 @@ describe('package manager invariants', () => {
     expect(trackedFiles()).toContain('pnpm-lock.yaml');
   });
 
-  it('declares pnpm through devEngines and not the legacy packageManager field', () => {
+  it('pins pnpm consistently through packageManager and devEngines', () => {
     const manifest: {
       packageManager?: string;
       devEngines?: { packageManager?: { name?: string; version?: string } };
@@ -54,11 +54,7 @@ describe('package manager invariants', () => {
 
     expect(manifest.devEngines?.packageManager?.name).toBe('pnpm');
     expect(manifest.devEngines?.packageManager?.version).toMatch(/^\d+\.\d+\.\d+$/u);
-
-    // Both fields together is the failure mode worth naming: pnpm resolves
-    // `packageManager` first, so a stale copy silently overrides the version
-    // `devEngines` declares and the one `pnpm-lock.yaml` records.
-    expect(manifest.packageManager).toBeUndefined();
+    expect(manifest.packageManager).toBe(`pnpm@${manifest.devEngines.packageManager.version}`);
   });
 
   // pnpm 12 parses pnpm-workspace.yaml with a Rust YAML parser that refuses a

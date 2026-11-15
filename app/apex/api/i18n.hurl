@@ -1,5 +1,5 @@
 # Language negotiation. The detector reads a language cookie but does not write
-# one; preference persistence belongs to Rails.
+# or refresh one.
 #
 # This file exists as its own file on purpose: the explicit Cookie headers
 # below make each precedence relationship visible and independent. Folding it

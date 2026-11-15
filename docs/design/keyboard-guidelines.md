@@ -14,7 +14,7 @@ Apple の指針では、標準ショートカットの尊重、頻繁に使う�
 本リポジトリでは、これらをブラウザー上の UI に適用する。
 Apple のネイティブ API や iPadOS のフォーカス制御に固有の説明は、そのまま Web の実装要件にはしない。
 特に iPadOS のネイティブコントロールに関する注意書きを理由に、HTML のボタンをキーボードで操作できなくしてはならない。
-既存の [UI shell contract](ui-shell-contract.md) と併せて適用する。
+既存の [apex HTML contract](apex-html-contract.md) と併せて適用する。
 
 ## 標準操作と独自ショートカット
 

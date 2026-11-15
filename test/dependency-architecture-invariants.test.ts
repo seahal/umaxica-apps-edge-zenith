@@ -47,7 +47,7 @@ interface CruiseOutput {
  * equality, so adding a unit does not fail this test, but losing the graph
  * does.
  */
-const MINIMUM_MODULES = 20;
+const MINIMUM_MODULES = 10;
 
 /** The same target list `check:architecture` passes, expanded here rather than
  *  by a shell so this runs without `shell: true`. */

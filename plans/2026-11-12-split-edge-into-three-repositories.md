@@ -1,5 +1,9 @@
 # Split umaxica-apps-edge into Three Repositories (2026-11-12)
 
+> Historical planning record. The repository names and ownership were later resolved; the current
+> Zenith scope and execution steps are recorded in
+> [`2026-11-14-split-prune-work-order.md`](2026-11-14-split-prune-work-order.md).
+
 Status: decided direction (owner, 2026-11-12); repository names and details open. Nothing is
 implemented.
 
@@ -7,14 +11,15 @@ implemented.
 
 1. **Three repositories**, following the Cosmos split:
 
-   | New repository | Takes from this repository | Related Cosmos repository |
-   | --- | --- | --- |
-   | acme (formerly "apex") | `*/apex` (`app`, `com`, `org`, `dev`, `net`) | the apex (acme) domains |
-   | sphere | `*/core` (`app`, `org`) | umaxica-apps-cosmos-sphere |
-   | press | `*/docs`, `*/help`, `*/info`, `*/news` (`app`, `com`, `org`) | umaxica-apps-cosmos-press |
+   | New repository         | Takes from this repository                                   | Related Cosmos repository  |
+   | ---------------------- | ------------------------------------------------------------ | -------------------------- |
+   | acme (formerly "apex") | `*/apex` (`app`, `com`, `org`, `dev`, `net`)                 | the apex (acme) domains    |
+   | sphere                 | `*/core` (`app`, `org`)                                      | umaxica-apps-cosmos-sphere |
+   | press                  | `*/docs`, `*/help`, `*/info`, `*/news` (`app`, `com`, `org`) | umaxica-apps-cosmos-press  |
 
    The apex group is renamed **acme**, because it serves the acme domains. The Edge repositories are
    not bound to Rails, so their names are free.
+
 2. **How to split:** copy this repository into each new one, then delete what that repository does
    not own. No shared package is created up front.
 3. **Vite+ (`vp`) is adopted** in all three. Every package already builds on Vite (Hono with a Vite
@@ -39,7 +44,7 @@ implemented.
 
 | Group  | Repository                 |
 | ------ | -------------------------- |
-| acme   | `umaxica-apps-edge-acme` |
+| acme   | `umaxica-apps-edge-acme`   |
 | sphere | `umaxica-apps-edge-sphere` |
 | press  | `umaxica-apps-edge-press`  |
 
@@ -73,16 +78,16 @@ commit. Each phase ends with a review by Claude before the next one starts.
 
 ### Ownership after the split
 
-| Path in this repository                     | acme   | sphere | press |
-| ------------------------------------------- | ------ | ------ | ----- |
-| `{app,com,org,dev,net}/apex`                | keep   | delete | delete |
-| `{app,org}/core`                            | delete | keep   | delete |
-| `com/core`                                  | delete | delete (retired) | delete |
-| `{app,com,org}/{docs,help,info,news}`       | delete | delete | keep  |
-| `all/busy`                                  | delete | keep until unneeded | delete |
-| `tools/vpc-probe`                           | delete | keep   | delete |
-| other `tools/`, `scripts/`, `test/`, `e2e/` | keep only what references kept packages | same | same |
-| `adr/`, `docs/`, `research/`, `specs/`      | keep what concerns kept packages; mark others superseded or delete | same | same |
+| Path in this repository                     | acme                                                               | sphere              | press  |
+| ------------------------------------------- | ------------------------------------------------------------------ | ------------------- | ------ |
+| `{app,com,org,dev,net}/apex`                | keep                                                               | delete              | delete |
+| `{app,org}/core`                            | delete                                                             | keep                | delete |
+| `com/core`                                  | delete                                                             | delete (retired)    | delete |
+| `{app,com,org}/{docs,help,info,news}`       | delete                                                             | delete              | keep   |
+| `all/busy`                                  | delete                                                             | keep until unneeded | delete |
+| `tools/vpc-probe`                           | delete                                                             | keep                | delete |
+| other `tools/`, `scripts/`, `test/`, `e2e/` | keep only what references kept packages                            | same                | same   |
+| `adr/`, `docs/`, `research/`, `specs/`      | keep what concerns kept packages; mark others superseded or delete | same                | same   |
 
 Paths not listed are resolved by the same rule: keep what a kept package uses.
 
@@ -114,7 +119,7 @@ plans/2026-11-12-split-edge-into-three-repositories.md>. Delete everything else.
    packages, check results. No commit.
 ```
 
-## Open
+## Zenith scope
 
-- Core Edge Workers binding to `www-jp.*` (`plans/2026-11-12-core-edge-handoff.md`) moves with the
-  sphere repository.
+The Core handoff is outside this repository's scope. Zenith's current execution order is
+[`2026-11-14-split-prune-work-order.md`](2026-11-14-split-prune-work-order.md).

@@ -34,7 +34,7 @@ const HOME_ROBOTS = 'index,follow';
  * here, in the homepage heading, and in the health document's data column. The
  * purpose beside it is prose and stays in the body face. That split is the one
  * typographic decision this surface carries: everything else is the shared
- * token set in docs/design/ui-shell-contract.md §9.
+ * token set in docs/design/apex-html-contract.md §2.
  *
  * `--font-mono` is Tailwind's stock stack rather than a token declared in
  * `@theme`. Unlike `--font-sans`, which is named explicitly because Japanese

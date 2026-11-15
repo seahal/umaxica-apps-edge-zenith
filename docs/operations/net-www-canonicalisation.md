@@ -44,12 +44,11 @@ authoritative while drifting silently.
 
 ### Prerequisite: the zone must be on Cloudflare
 
-`umaxica.net` is a Cloudflare zone. **`umaxica.dev` is not** — it is delegated
-to Vercel DNS (`ns1/ns2.vercel-dns.com`), which is recorded in
-`docs/operations/cloudflare-tunnel-development.md`. Until that zone is moved to
-Cloudflare nameservers, neither the `dev` redirect rule nor a custom domain for
-the `dev/apex` Worker can exist. The Worker deploys and is reachable on its
-`workers.dev` URL either way; what is blocked is the hostname.
+The last recorded state says `umaxica.net` is a Cloudflare zone and
+`umaxica.dev` is delegated to Vercel DNS (`ns1/ns2.vercel-dns.com`). This repo
+does not check that external state as part of local validation; confirm current
+DNS ownership before planning a `.dev` redirect or custom domain. Without a
+Cloudflare zone, neither can be applied there.
 
 This is the one item here that is not a five-minute dashboard change, and it
 should be scheduled before anything below is attempted for `.dev`.
@@ -68,8 +67,7 @@ this case. The request never reaches it — the rule answers first.
 
 ### 2. A Single Redirect rule per zone
 
-Two rules, one in each zone. Both zones are on the free plan's limit of 10
-Single Redirects, so this uses two of twenty.
+Two rules, one in each zone, cover the two hostnames.
 
 | Field                 | Value           |
 | --------------------- | --------------- |

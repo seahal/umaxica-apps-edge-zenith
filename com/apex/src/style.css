@@ -14,7 +14,7 @@
  * Vite compiles this file through `@tailwindcss/vite` and emits it into
  * `dist/client` with a content hash in the filename; `src/assets.ts` is the one
  * place that URL is named, and `public/_headers` is what marks the result
- * `immutable` (ADR 012, and docs/design/ui-shell-contract.md §3a). Cloudflare
+ * `immutable` (ADR 012, and docs/design/apex-html-contract.md §2). Cloudflare
  * matches the static asset before the Worker runs, so the stylesheet costs no
  * invocation and is cached across every document this unit serves.
  *
@@ -80,7 +80,7 @@
 
   /*
    * One breakpoint, and the theme is what enforces it. The shell contract
-   * (docs/design/ui-shell-contract.md §11) makes 800px the only breakpoint in
+   * (docs/design/apex-html-contract.md §2) makes 800px the only breakpoint in
    * the repository. Clearing the namespace first removes Tailwind's five
    * defaults, so a second breakpoint cannot be written without editing this
    * block — the rule is mechanical rather than a convention to remember.

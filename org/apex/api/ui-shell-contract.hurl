@@ -2,7 +2,7 @@
 #
 # What has to stay stable across every deployment unit is the emitted document —
 # semantics, hierarchy, accessible names — not the way this unit happens to
-# build it. `docs/design/ui-shell-contract.md` is normative.
+# build it. `docs/design/apex-html-contract.md` is normative.
 #
 # These assertions deliberately do not name a CSS class. Every visual rule is a
 # Tailwind utility, so a class list is styling rather than structure: a test
@@ -40,7 +40,7 @@ xpath "count(//main//h1)" == 1
 xpath "count(//header//a)" == 1
 xpath "count(//header//button)" == 0
 
-# The skip link (docs/design/ui-shell-contract.md §12). It has to be the first
+# The skip link (docs/design/apex-html-contract.md §1). It has to be the first
 # focusable element in the document — not merely the first link — so the union
 # below is every element that can take focus, taken in document order.
 xpath "count(//a[@href='#main-content'])" == 1

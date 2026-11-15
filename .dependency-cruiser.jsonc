@@ -4,7 +4,7 @@
 //
 // dependency-cruiser cannot see this repository's TypeScript. v18.2.0 (the
 // latest release) reaches for TypeScript's programmatic compiler API and
-// declares `typescript: >=2.0.0 <7.0.0`; this repository is on TypeScript 7.0.2,
+// declares `typescript: >=2.0.0 <7.0.0`; the catalog requires TypeScript 7.1.0 or newer,
 // which does not publish that API. Run against a TS directory it reports
 //
 //     ✔ no dependency violations found (0 modules, 0 dependencies cruised)
@@ -18,7 +18,7 @@
 // for the condition under which this file should grow.
 //
 // The JavaScript graph is small and fully enumerated: tools/*.mjs plus the
-// twenty per-unit api/run.mjs Hurl runners. scripts/ is deliberately absent —
+// five per-unit api/run.mjs Hurl runners. scripts/ is deliberately absent —
 // every file there is `#!/usr/bin/env bash`, which no JS parser reads.
 {
   "forbidden": [
@@ -79,7 +79,7 @@
     },
     {
       "name": "api-runner-is-self-contained",
-      "comment": "Each unit's api/run.mjs spawns that unit's dev server, runs Hurl and stops it. All twenty are node:-builtins-only today, and that is what lets a unit be extracted into its own repository with its HTTP-contract suite intact. Any non-core import here — a shared helper, a sibling unit, an npm package — breaks that promise, so it fails rather than being discovered during an extraction.",
+      "comment": "Each unit's api/run.mjs spawns that unit's dev server, runs Hurl and stops it. All five are node:-builtins-only today, and that is what lets a unit be extracted into its own repository with its HTTP-contract suite intact. Any non-core import here — a shared helper, a sibling unit, an npm package — breaks that promise, so it fails rather than being discovered during an extraction.",
       "severity": "error",
       "from": { "path": "api/run\\.mjs$" },
       "to": { "dependencyTypesNot": ["core"] }

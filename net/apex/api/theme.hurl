@@ -48,7 +48,7 @@ HTTP 200
 [Asserts]
 xpath "count(//html[@data-theme])" == 0
 
-# 5. Alongside a `language` cookie Rails may issue.
+# 5. Alongside an incoming `language` cookie; this Worker does not issue it.
 GET {{base}}/about?lang=ja
 Cookie: theme=dark; language=ja
 HTTP 200
