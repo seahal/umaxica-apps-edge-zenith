@@ -12,18 +12,14 @@ it cannot put a second pnpm ahead of the pinned installation. The versions in `C
 The effective user is `edge`, mapped through rootless `keep-id:uid=1000,gid=1000`. The image creates
 the tool and writable XDG paths at build time.
 
-Start the Dev Container from the repository root:
+Start and enter the workspace container from the repository root:
 
 ```bash
-scripts/devcontainer-up
-```
-
-The five apex Workers can be started by hand inside the workspace container. The direct Compose
-entrypoint is also available:
-
-```bash
+scripts/dev-build
 scripts/dev-start [--tunnel]
-podman compose exec core bash -l
+podman compose -f compose.yaml -f compose.workspace.yaml exec core bash -l
+node --version
+pnpm --version
 ```
 
 See [Dev Containers CLI startup on rootless Podman](devcontainer-cli-podman-startup.md) for the

@@ -7,25 +7,13 @@ Podman/Docker sockets.
 
 ## Dev Container
 
-Start the Dev Container from the repository root:
+`compose.yaml` plus `compose.workspace.yaml` are a complete standard environment: a
+fresh clone starts with no
+local file created.
 
-```bash
-scripts/devcontainer-up
-```
+## Startup
 
-Run a Worker from the workspace root inside the container:
-
-```bash
-pnpm --dir app/apex run dev
-```
-
-Replace `app/apex` with another package to start a different Worker. The container publishes the
-five development ports and Wrangler's login callback.
-
-## Direct Compose
-
-`scripts/dev-start` starts the workspace container. Add `--tunnel` to start this repository's
-Cloudflare Tunnel connector too:
+Start the environment with `scripts/dev-start`; it also takes the optional Tunnel flag:
 
 ```bash
 scripts/dev-start [--tunnel]
