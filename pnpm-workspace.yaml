@@ -13,35 +13,35 @@ allowBuilds:
   # `pnpm test:api` failing with ENOENT. This is the one place in the toolchain
   # where `ignore-scripts=true` has to be relaxed, and it is relaxed for a
   # version-pinned devDependency that never reaches a Worker bundle.
-  '@orangeopensource/hurl': true
+  "@orangeopensource/hurl": true
   esbuild: true
   lefthook: true
   workerd: true
 
 catalog:
-  '@cloudflare/vite-plugin': ^1.67.0
-  '@cloudflare/workers-types': ^5.20261103.1
-  '@hono/structured-logger': ^1.0.0
-  '@orangeopensource/hurl': ^8.1.0
-  '@playwright/test': ^1.64.1
-  '@size-limit/file': ^14.3.0
-  '@tailwindcss/vite': ^4.3.4
-  '@testing-library/jest-dom': ^7.0.1
-  '@types/node': ^26.6.6
-  '@vitest/coverage-v8': 5.1.0
-  cspell: ^10.4.0
+  "@cloudflare/vite-plugin": ^1.67.0
+  "@cloudflare/workers-types": ^5.20261103.1
+  "@hono/structured-logger": ^1.0.0
+  "@orangeopensource/hurl": ^8.1.0
+  "@playwright/test": ^1.64.1
+  "@size-limit/file": ^14.3.0
+  "@tailwindcss/vite": ^4.3.4
+  "@testing-library/jest-dom": ^7.0.1
+  "@types/node": ^26.6.6
+  "@vitest/coverage-v8": 5.1.0
+  cspell: ^10.5.1
   dependency-cruiser: ^18.7.2
   happy-dom: ^21.0.4
   hono: ^4.13.16
-  knip: ^6.44.1
+  knip: ^6.45.1
   size-limit: ^14.3.0
   syncpack: ^15.3.3
   tailwindcss: ^4.3.4
-  typescript: ^7.1.0
+  typescript: ^7.0.2
   vite: ^7.2.0
   vite-plus: ^1.6.0
   vitest: 5.1.0
-  wrangler: ^4.124.0
+  wrangler: ^4.162.0
 
 # Hold newly published versions back so a compromised release has time to be
 # pulled from the registry before it can be installed here.
