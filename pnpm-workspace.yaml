@@ -145,7 +145,7 @@ catalog:
   # catalog definitions and the `catalog:` specifiers pointing at them — so it
   # belongs to the repository root rather than to any unit.
   syncpack: ^15.3.3
-  tailwindcss: ^4.3.4
+  tailwindcss: ^4.3.5
   # The official Tailwind plugin for react-aria-components, which turns the
   # library's `data-hovered` / `data-pressed` / `data-focus-visible` attributes
   # into first-class variants (`hovered:`, `pressed:`, `focus-visible:`). Only
