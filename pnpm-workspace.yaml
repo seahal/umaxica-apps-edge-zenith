@@ -111,7 +111,7 @@ catalog:
   # React Fast Refresh and the JSX transform for the Vite-built units. The two
   # apex Workers do not install it — they render with hono/jsx and have no React
   # at all (docs/design/ui-shell-contract.md §3a).
-  '@vitejs/plugin-react': ^6.2.1
+  '@vitejs/plugin-react': ^6.3.0
   # Exact, not a range, and deliberately so: V8 coverage remapping has to match
   # the vitest it instruments, and the provider says so itself — it declares an
   # EXACT peer on the runner. `vitest` below is therefore exact too, at the same
