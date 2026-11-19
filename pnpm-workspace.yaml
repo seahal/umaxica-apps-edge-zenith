@@ -94,7 +94,7 @@ catalog:
   # The two numbers are a tested pair, not two independent choices: this Start
   # release depends on exactly this Router release.
   '@tanstack/react-router': ^1.170.46
-  '@tanstack/react-start': ^1.169.4
+  '@tanstack/react-start': ^1.169.5
   # Serves the agent skills that TanStack packages ship (`pnpm exec intent
   # list`), as the Skill Loading block at the top of AGENTS.md describes. Root
   # only: it reads every unit's `node_modules` from the workspace root.
