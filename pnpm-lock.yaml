@@ -267,8 +267,8 @@ catalogs:
       specifier: ^15.3.3
       version: 15.3.3
     tailwindcss:
-      specifier: ^4.3.4
-      version: 4.3.4
+      specifier: ^4.3.5
+      version: 4.3.5
     tailwindcss-react-aria-components:
       specifier: ^2.2.0
       version: 2.2.0
@@ -394,7 +394,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -497,10 +497,10 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       tailwindcss-react-aria-components:
         specifier: 'catalog:'
-        version: 2.2.0(tailwindcss@4.3.4)
+        version: 2.2.0(tailwindcss@4.3.5)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -597,7 +597,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -694,7 +694,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -791,7 +791,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -888,7 +888,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -958,7 +958,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1061,10 +1061,10 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       tailwindcss-react-aria-components:
         specifier: 'catalog:'
-        version: 2.2.0(tailwindcss@4.3.4)
+        version: 2.2.0(tailwindcss@4.3.5)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1161,7 +1161,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1258,7 +1258,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1355,7 +1355,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1452,7 +1452,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1522,7 +1522,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1592,7 +1592,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1662,7 +1662,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1765,10 +1765,10 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       tailwindcss-react-aria-components:
         specifier: 'catalog:'
-        version: 2.2.0(tailwindcss@4.3.4)
+        version: 2.2.0(tailwindcss@4.3.5)
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1865,7 +1865,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -1962,7 +1962,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -2059,7 +2059,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -2156,7 +2156,7 @@ importers:
         version: 14.3.0
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.3.4
+        version: 4.3.5
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -5307,6 +5307,9 @@ packages:
   tailwindcss@4.3.4:
     resolution: {integrity: sha512-PCJZTFFdG+sL3gvnP1Do9o6GbkvH2q0p04xSs3f7cSvmAeK+sttG+/7ncK1fdRwKFfC7n+wDDJaOMBSefkI9ow==}
 
+  tailwindcss@4.3.5:
+    resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
+
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
@@ -8346,11 +8349,13 @@ snapshots:
       syncpack-windows-arm64: 15.3.3
       syncpack-windows-x64: 15.3.3
 
-  tailwindcss-react-aria-components@2.2.0(tailwindcss@4.3.4):
+  tailwindcss-react-aria-components@2.2.0(tailwindcss@4.3.5):
     dependencies:
-      tailwindcss: 4.3.4
+      tailwindcss: 4.3.5
 
   tailwindcss@4.3.4: {}
+
+  tailwindcss@4.3.5: {}
 
   tapable@2.3.3: {}
 
